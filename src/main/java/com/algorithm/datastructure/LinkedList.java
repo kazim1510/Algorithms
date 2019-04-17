@@ -1,4 +1,4 @@
-package com.algorithm;
+package com.algorithm.datastructure;
 
 public class LinkedList {
     private static class Node {
