@@ -86,8 +86,4 @@ public class Stack {
         insertAtBottom(stack, val);
         stack.push(temp);
     }
-
-    // problem-3
-
-
 }

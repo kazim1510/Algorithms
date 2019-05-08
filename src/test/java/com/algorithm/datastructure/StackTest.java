@@ -1,9 +1,9 @@
 package com.algorithm.datastructure;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class StackTest {
     private Stack stack;
@@ -15,7 +15,7 @@ public class StackTest {
 
     @Test
     public void evaluateExpression() throws Exception {
-        int val = stack.evaluateExpression(new String[]{"1", "2", "3", "*","+", "5", "-"});
+        int val = stack.evaluateExpression(new String[]{"1", "2", "3", "*", "+", "5", "-"});
         assertEquals(2, val);
     }
 

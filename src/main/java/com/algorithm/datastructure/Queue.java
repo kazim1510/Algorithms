@@ -17,25 +17,23 @@ public class Queue {
     public Queue() {
     }
 
-    public void add(int val){
+    public void add(int val) {
         Node newNode = new Node(val);
-        if(tail != null){
+        if (tail != null) {
             tail.next = newNode;
         }
         tail = newNode;
-        if(head == null){
+        if (head == null) {
             head = tail;
         }
-
     }
 
-    public int remove(){
+    public int remove() {
         int val = head.val;
         head = head.next;
-        if(head == null){
+        if (head == null) {
             throw new RuntimeException("");
         }
-
         return val;
     }
 }

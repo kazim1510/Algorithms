@@ -62,7 +62,7 @@ public class DynamicArray {
         initialCapasity = initialCapasity * 2;
     }
 
-    public void add(String val){
+    public void add(String val) {
 
     }
 

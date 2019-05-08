@@ -1,10 +1,11 @@
 package com.algorithm.datastructure;
 
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class LinkedListTest {
 
@@ -76,7 +77,7 @@ public class LinkedListTest {
         linkedList.addBack(4);
         linkedList.addBack(5);
 
-        assertEquals(false, linkedList.loopExists(linkedList.getHead()));
+        assertFalse(linkedList.loopExists(linkedList.getHead()));
     }
 
     @Test
@@ -142,7 +143,6 @@ public class LinkedListTest {
         linkedList.addBack(6);
 
         LinkedList.Node node = linkedList.rotateRight(linkedList.getHead(), 2);
-//        assertEquals(true, success);
     }
 
     @Test

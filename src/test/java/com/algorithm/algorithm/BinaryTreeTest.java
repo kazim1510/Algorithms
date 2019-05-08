@@ -31,9 +31,4 @@ public class BinaryTreeTest {
 
         assertEquals("5", binaryTree.find(5));
     }
-
-    @Test
-    public void find() throws Exception {
-    }
-
 }

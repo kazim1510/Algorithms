@@ -63,9 +63,7 @@ public class LinkedList {
             this.head = head.next;
             return;
         }
-
         Node current = head;
-
         while (current.next != null) {
             if (current.next.val == val) {
                 current.next = current.next.next;
@@ -84,7 +82,6 @@ public class LinkedList {
             current = current.next;
             count++;
         }
-
         return count;
     }
 
@@ -112,7 +109,6 @@ public class LinkedList {
         if (current == null) {
             return 0;
         }
-
         return current.val;
     }
 

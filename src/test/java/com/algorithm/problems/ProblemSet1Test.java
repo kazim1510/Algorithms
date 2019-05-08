@@ -1,12 +1,12 @@
 package com.algorithm.problems;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ProblemSet1Test {
 
@@ -57,16 +57,16 @@ public class ProblemSet1Test {
         int num1 = problemSet1.findUnsortedSubarray(new int[]{2, 6, 4, 8, 10, 9, 15});
         assertEquals(5, num1);
 
-        int num2 = problemSet1.findUnsortedSubarray(new int[]{1,2,3,4});
+        int num2 = problemSet1.findUnsortedSubarray(new int[]{1, 2, 3, 4});
         assertEquals(0, num2);
 
-        int num3 = problemSet1.findUnsortedSubarray(new int[]{1,3,2,4});
+        int num3 = problemSet1.findUnsortedSubarray(new int[]{1, 3, 2, 4});
         assertEquals(2, num3);
 
-        int num4 = problemSet1.findUnsortedSubarray(new int[]{5,4,3,2,1});
+        int num4 = problemSet1.findUnsortedSubarray(new int[]{5, 4, 3, 2, 1});
         assertEquals(5, num4);
 
-        int num5 = problemSet1.findUnsortedSubarray(new int[]{1,2,3,3,3});
+        int num5 = problemSet1.findUnsortedSubarray(new int[]{1, 2, 3, 3, 3});
         assertEquals(0, num5);
     }
 }
