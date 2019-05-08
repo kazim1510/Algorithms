@@ -1,5 +1,7 @@
 package com.algorithm.problems;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class ProblemSet1 {
@@ -47,6 +49,132 @@ public class ProblemSet1 {
         return result;
     }
 
+    /**
+     * Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+     * <p>
+     * Example:
+     * <p>
+     * Input: [0,1,0,3,12]
+     * Output: [1,3,12,0,0]
+     * <p>
+     * Note:
+     * You must do this in-place without making a copy of the array.
+     * Minimize the total number of operations.
+     */
+    public void moveZeroes(int[] nums) {
+        int k = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[k] == 0 && nums[i] != 0) {
+                swap(nums, k, i);
+                k++;
+            } else if (nums[k] != 0) {
+                k++;
+            }
+        }
+    }
 
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+
+    /**
+     * Given two binary trees and imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not.
+     * <p>
+     * You need to merge them into a new binary tree. The merge rule is that if two nodes overlap, then sum node values up as the new value of the merged node.
+     * Otherwise, the NOT null node will be used as the node of new tree.
+     */
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        if (t1 == null) {
+            return t2;
+        }
+
+        if (t2 == null) {
+            return t1;
+        }
+
+        t1.val = t1.val + t2.val;
+        t1.left = mergeTrees(t1.left, t2.left);
+        t1.right = mergeTrees(t1.right, t2.right);
+        return t1;
+    }
+
+    /**
+     * Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+     * <p>
+     * You may assume that the array is non-empty and the majority element always exist in the array.
+     * <p>
+     * Example 1:
+     * <p>
+     * Input: [3,2,3]
+     * Output: 3
+     * Example 2:
+     * <p>
+     * Input: [2,2,1,1,1,2,2]
+     * Output: 2
+     */
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> ret = new ArrayList<Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            int val = Math.abs(nums[i]) - 1;
+            if (nums[val] > 0) {
+                nums[val] = -nums[val];
+            }
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                ret.add(i + 1);
+            }
+        }
+        return ret;
+    }
+
+    public int[] numMovesStones(int a, int b, int c) {
+        int ab = Math.abs(a - b);
+        int bc = Math.abs(b - c);
+        int ca = Math.abs(c - a);
+
+        int max = Math.max(ab, Math.max(bc, ca));
+        int min = Math.min(ab, Math.min(bc, ca));
+
+        int[] result = new int[2];
+        result[0] = 2;
+        if (min == 1) {
+            if (max == 2) {
+                result[0] = 0;
+            } else {
+                result[0] = 1;
+            }
+        } else if (min == 2) {
+            result[0] = 1;
+        }
+
+        result[1] = max - 2;
+
+        return result;
+    }
+
+    public int findUnsortedSubarray(int[] nums) {
+        int start = -1;
+        int end = 0;
+
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] > nums[i + 1]) {
+                if (start == -1) {
+                    start = i;
+                }
+                end = i + 2;
+            }
+        }
+
+        if (start < 0) {
+            return 0;
+        }
+
+        return end - start;
+    }
 
 }
