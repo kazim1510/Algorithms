@@ -30,10 +30,24 @@ public class Queue {
 
     public int remove() {
         int val = head.val;
-        head = head.next;
-        if (head == null) {
-            throw new RuntimeException("");
+
+        if (head != null) {
+            head = head.next;
         }
         return val;
+    }
+
+    public int size() {
+        if (head == null) {
+            return 0;
+        }
+
+        Queue.Node current = head;
+        int count = 1;
+        while (current.next != null) {
+            current = current.next;
+            count++;
+        }
+        return count;
     }
 }

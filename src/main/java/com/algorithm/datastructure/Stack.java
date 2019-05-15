@@ -33,6 +33,20 @@ public class Stack {
         return returnNode.val;
     }
 
+    public int size() {
+        if (head == null) {
+            return 0;
+        }
+
+        Stack.Node current = head;
+        int count = 1;
+        while (current.next != null) {
+            current = current.next;
+            count++;
+        }
+        return count;
+    }
+
     // problem-1 evaluate expression
     public int evaluateExpression(String[] tokens) {
         Stack stack = new Stack();
