@@ -177,4 +177,26 @@ public class ProblemSet1 {
         return end - start;
     }
 
+    /**
+     * Complete the function that takes an integer as its argument and returns the encoded string in base 7 using the following encoding rule:
+     * base 10 - 0 1 2 3 4 5 6
+     * base 7  - 0 a t l s i n
+     * Sample Input 1 7 Sample Output 1 a0
+     */
+    public String getBase7(int val) {
+        char[] arr = new char[]{'0', 'a', 't', 'l', 's', 'i', 'n'};
+        if (val == 0) {
+            return "0";
+        }
+
+        StringBuilder str = new StringBuilder();
+        while (val > 0) {
+            int temp = val % 7;
+            str.append(arr[temp]);
+            val = val / 7;
+        }
+
+        return str.reverse().toString();
+    }
+
 }

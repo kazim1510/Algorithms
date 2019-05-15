@@ -69,4 +69,12 @@ public class ProblemSet1Test {
         int num5 = problemSet1.findUnsortedSubarray(new int[]{1, 2, 3, 3, 3});
         assertEquals(0, num5);
     }
+
+    @Test
+    public void getBase7() {
+        assertEquals("0", problemSet1.getBase7(0));
+        assertEquals("a0", problemSet1.getBase7(7));
+        assertEquals("ass", problemSet1.getBase7(81));
+        assertEquals("tits", problemSet1.getBase7(949));
+    }
 }
