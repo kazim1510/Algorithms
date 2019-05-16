@@ -1,8 +1,6 @@
 package com.algorithm.problems;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class ProblemSet1 {
 
@@ -197,6 +195,60 @@ public class ProblemSet1 {
         }
 
         return str.reverse().toString();
+    }
+
+    //Unique Characters
+    public boolean isUnique(String string) {
+        Set<Character> set = new HashSet<>();
+        char[] chars = string.toCharArray();
+        Arrays.sort(chars);
+
+        for (char aChar : chars) {
+            if (set.contains(aChar)) {
+                return false;
+            }
+            set.add(aChar);
+        }
+        return true;
+    }
+
+    public String urlify(String string, int length) {
+        string = string.trim();
+        char[] chars = string.toCharArray();
+        char[] returnChars = new char[length];
+
+        for (int i = 0, k = 0; i < chars.length; i++) {
+            if (chars[i] == ' ') {
+                returnChars[k++] = '%';
+                returnChars[k++] = '2';
+                returnChars[k++] = '0';
+            } else {
+                returnChars[k++] = chars[i];
+            }
+        }
+
+        return new String(returnChars);
+    }
+
+    public boolean oneAway(String left, String right) {
+
+//        if (left.length() - right.length() > 1) {
+//            return false;
+//        }
+//
+//        char[] leftChars = left.toCharArray();
+//        char[] rightChars = right.toCharArray();
+//        int count = 0;
+//        boolean[] result = new boolean[leftChars.length];
+//        for (int i = 0, j = 0; i < leftChars.length && j < rightChars.length; i++) {
+//            if (leftChars[i] != rightChars[j]) {
+//                count++;
+//            } else {
+//                j++;
+//            }
+//        }
+//
+        return false;
     }
 
 }

@@ -5,8 +5,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ProblemSet1Test {
 
@@ -76,5 +75,26 @@ public class ProblemSet1Test {
         assertEquals("a0", problemSet1.getBase7(7));
         assertEquals("ass", problemSet1.getBase7(81));
         assertEquals("tits", problemSet1.getBase7(949));
+    }
+
+    @Test
+    public void isUnique() {
+        assertFalse(problemSet1.isUnique("aa"));
+        assertTrue(problemSet1.isUnique("ab"));
+        assertFalse(problemSet1.isUnique("abcdafjkoup"));
+        assertTrue(problemSet1.isUnique("abcdfjkoup"));
+    }
+
+    @Test
+    public void urlify() {
+        assertEquals("My%20Home%20Page", problemSet1.urlify("My Home Page", 16));
+    }
+
+    @Test
+    public void oneAway() {
+        assertTrue(problemSet1.oneAway("pales", "ples"));
+        assertTrue(problemSet1.oneAway("pales", "pales"));
+        assertTrue(problemSet1.oneAway("pales", "bales"));
+        assertFalse(problemSet1.oneAway("pales", "ble"));
     }
 }
