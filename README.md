@@ -11,6 +11,7 @@ Algorithms:
 1) Binary Tree
 2) Memoization
 3) Sort 
-  - Quick Sort
-  - Merge Sort
-  - Bubble Sort
+   - Quick Sort
+   - Merge Sort
+   - Bubble Sort
+4) Grapgs
