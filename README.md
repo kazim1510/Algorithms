@@ -14,4 +14,4 @@ Algorithms:
    - Quick Sort
    - Merge Sort
    - Bubble Sort
-4) Grapgs
+4) Graphs
