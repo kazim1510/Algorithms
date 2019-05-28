@@ -2,18 +2,23 @@ package com.algorithm.problems;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.algorithm.algorithm.BinaryTree;
 
 import static org.junit.Assert.*;
 
 public class ProblemSet1Test {
 
     private ProblemSet1 problemSet1;
+    private BinaryTree binaryTree;
 
     @Before
     public void setUp() throws Exception {
         problemSet1 = new ProblemSet1();
+        binaryTree = new BinaryTree();
     }
 
     @Test
@@ -96,5 +101,48 @@ public class ProblemSet1Test {
         assertTrue(problemSet1.oneAway("pales", "pales"));
         assertTrue(problemSet1.oneAway("pales", "bales"));
         assertFalse(problemSet1.oneAway("pales", "ble"));
+    }
+
+    @Test
+    public void compress() {
+        Assert.assertEquals("a3b2", problemSet1.compressor("aaabb"));
+        Assert.assertEquals("a2b2", problemSet1.compressor("aabb"));
+        Assert.assertEquals("ab", problemSet1.compressor("ab"));
+        Assert.assertEquals("abc", problemSet1.compressor("abc"));
+        Assert.assertEquals("z3", problemSet1.compressor("zzz"));
+    }
+
+    @Test
+    public void checkSubTree() {
+        Assert.assertEquals("a3b2", problemSet1.compressor("aaabb"));
+        Assert.assertEquals("a2b2", problemSet1.compressor("aabb"));
+        Assert.assertEquals("ab", problemSet1.compressor("ab"));
+        Assert.assertEquals("abc", problemSet1.compressor("abc"));
+        Assert.assertEquals("z3", problemSet1.compressor("zzz"));
+    }
+
+    @Test
+    public void countPathWithSum() {
+        binaryTree.insert(10, "5");
+
+        BinaryTree.Node node1 = new BinaryTree.Node(5,"5");
+        BinaryTree.Node node2 = new BinaryTree.Node(-3, "3");
+        BinaryTree.Node node3 = new BinaryTree.Node(3, "3");
+        BinaryTree.Node node4 = new BinaryTree.Node(2, "2");
+        BinaryTree.Node node5 = new BinaryTree.Node(11, "11");
+        BinaryTree.Node node6 = new BinaryTree.Node(3, "3");
+        BinaryTree.Node node7 = new BinaryTree.Node(-2, "-2");
+        BinaryTree.Node node8 = new BinaryTree.Node(1, "1");
+
+        binaryTree.add(binaryTree.getRoot(), node1, "left");
+        binaryTree.add(binaryTree.getRoot(), node2, "right");
+        binaryTree.add(node1, node3, "left");
+        binaryTree.add(node1, node4, "right");
+        binaryTree.add(node2, node5, "right");
+        binaryTree.add(node3, node6, "left");
+        binaryTree.add(node3, node7, "right");
+        binaryTree.add(node4, node8, "right");
+
+        assertEquals(3, problemSet1.countPathWithSum(binaryTree.getRoot(), 8));
     }
 }

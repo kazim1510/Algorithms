@@ -2,6 +2,8 @@ package com.algorithm.problems;
 
 import java.util.*;
 
+import com.algorithm.algorithm.BinaryTree;
+
 public class ProblemSet1 {
 
     /**
@@ -231,24 +233,95 @@ public class ProblemSet1 {
     }
 
     public boolean oneAway(String left, String right) {
-
-//        if (left.length() - right.length() > 1) {
-//            return false;
-//        }
-//
-//        char[] leftChars = left.toCharArray();
-//        char[] rightChars = right.toCharArray();
-//        int count = 0;
-//        boolean[] result = new boolean[leftChars.length];
-//        for (int i = 0, j = 0; i < leftChars.length && j < rightChars.length; i++) {
-//            if (leftChars[i] != rightChars[j]) {
-//                count++;
-//            } else {
-//                j++;
-//            }
-//        }
-//
+        if (left.length() == right.length()) {
+            return oneEditReplace(left, right);
+        } else if (left.length() + 1 == right.length()) {
+            return oneEditInsert(left, right);
+        } else if (left.length() - 1 == right.length()) {
+            return oneEditInsert(right, left);
+        }
         return false;
     }
 
+    private boolean oneEditReplace(String left, String right) {
+        int count = 0;
+
+        for (int i = 0; i < left.length(); i++) {
+            if (left.charAt(i) != right.charAt(i)) {
+                count++;
+            }
+            if (count > 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean oneEditInsert(String left, String right) {
+
+        int index1 = 0;
+        int index2 = 0;
+
+        while (index1 < left.length() && index2 < right.length()) {
+
+            if (left.charAt(index1) != right.charAt(index2)) {
+                if (index1 != index2) {
+                    return false;
+                }
+                index2++;
+            } else {
+                index1++;
+                index2++;
+            }
+        }
+
+        return true;
+    }
+
+    public String compressor(String test) {
+        char[] chars = test.toCharArray();
+        StringBuilder builder = new StringBuilder();
+        builder.append(chars[0]);
+        int count = 1;
+        for (int i = 1; i < chars.length; i++) {
+            if (chars[i - 1] == chars[i]) {
+                count++;
+            } else {
+                if (count > 1) {
+                    builder.append(count);
+                    count = 1;
+                }
+                builder.append(chars[i]);
+            }
+
+        }
+        if (count > 1) {
+            builder.append(count);
+        }
+
+        return builder.toString();
+    }
+
+    public int countPathWithSum(BinaryTree.Node root, int targetSum) {
+        if (root == null) return 0;
+
+        int pathsFromNode = countPathSumFromNode(root, targetSum, 0);
+        int pathFromRight = countPathWithSum(root.right, targetSum);
+        int pathFromLeft = countPathWithSum(root.left, targetSum);
+
+        return pathsFromNode + pathFromLeft + pathFromRight;
+    }
+
+    private int countPathSumFromNode(BinaryTree.Node node, int targetSum, int currentSum) {
+        if (node == null) return 0;
+        currentSum += node.key;
+        int totalPath = 0;
+        if (currentSum == targetSum) {
+            totalPath++;
+        }
+
+        totalPath += countPathSumFromNode(node.left, targetSum, currentSum);
+        totalPath += countPathSumFromNode(node.right, targetSum, currentSum);
+        return totalPath;
+    }
 }

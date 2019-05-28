@@ -3,10 +3,10 @@ package com.algorithm.algorithm;
 public class BinaryTree {
 
     public static class Node {
-        int key;
-        String val;
-        Node left;
-        Node right;
+        public int key;
+        public String val;
+        public Node left;
+        public Node right;
 
         public Node(int key, String val) {
             this.key = key;
@@ -44,6 +44,14 @@ public class BinaryTree {
             node.right = insertItem(node.right, key, val);
         }
         return node;
+    }
+
+    public void add(Node parent, Node current, String orientation) {
+        if ("left".equals(orientation)) {
+            parent.left = current;
+        } else {
+            parent.right = current;
+        }
     }
 
     public void delete(int key) {
@@ -97,5 +105,9 @@ public class BinaryTree {
 
     public Node findMin(Node node) {
         return node.min();
+    }
+
+    public Node getRoot() {
+        return root;
     }
 }
